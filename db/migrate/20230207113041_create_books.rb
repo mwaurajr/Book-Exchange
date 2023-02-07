@@ -4,6 +4,7 @@ class CreateBooks < ActiveRecord::Migration[7.0]
       t.integer :user_id
       t.string :title
       t.string :author
+      t.string :published
       t.string :description
 
       t.timestamps
