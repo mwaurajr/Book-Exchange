@@ -17,6 +17,7 @@ class User < ApplicationRecord
     length: { maximum: 13 },
     allow_nil: false
 
-    
+    has_many :sent_book_exchanges, foreign_key: 'sender_id', class_name: 'BookExchange'
+    has_many :received_book_exchanges, foreign_key: 'receiver_id', class_name: 'BookExchange'
     
 end
