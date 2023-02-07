@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_07_113041) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_132358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "book_exchanges", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_exchanges_on_book_id"
+    t.index ["receiver_id"], name: "index_book_exchanges_on_receiver_id"
+    t.index ["sender_id"], name: "index_book_exchanges_on_sender_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.integer "user_id"
@@ -39,4 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_113041) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "book_exchanges", "books"
+  add_foreign_key "book_exchanges", "users", column: "receiver_id"
+  add_foreign_key "book_exchanges", "users", column: "sender_id"
 end
