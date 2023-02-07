@@ -11,10 +11,12 @@ class User < ApplicationRecord
     length: { in: 3..255 }, 
     format: { with: URI::MailTo::EMAIL_REGEXP }
 
-    
+
   validates :phone_number,
     format: { with: /\A\d{13}\z/ },
     length: { maximum: 13 },
     allow_nil: false
+
+    
     
 end

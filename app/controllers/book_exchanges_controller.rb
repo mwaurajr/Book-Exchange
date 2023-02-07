@@ -1,0 +1,2 @@
+class BookExchangesController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class BookExchange < ApplicationRecord
+end
