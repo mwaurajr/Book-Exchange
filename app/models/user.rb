@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     has_many :books
 
-    attribute :phoneNumber, :integer, limit: 13
+    # attribute :phoneNumber, :integer, limit: 
 
     validates :name, :address, presence: true
    
@@ -11,8 +11,8 @@ class User < ApplicationRecord
     length: { in: 3..255 }, 
     format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :phone_number,
-    format: { with: /\A\d{10}\z/ },
-    length: { maximum: 10 },
+    format: { with: /\A\d{13}\z/ },
+    length: { maximum: 13 },
     allow_nil: false
     
 end
