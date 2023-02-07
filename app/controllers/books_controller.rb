@@ -1,15 +1,16 @@
 class BooksController < ApplicationController
     
     def index
+        
     end
 
     def show
     end
 
-    def create
+    def create(books_params)
     end
 
-    def update
+    def update(books_params)
     end
 
     def delete
@@ -18,8 +19,8 @@ class BooksController < ApplicationController
 
     private
 
-    def BooksParams
-        params.permit(:title, :description, :author, :published)
+    def books_params
+        params.require(:books).permit(:title, :description, :author, :published)
     end
 
 end
