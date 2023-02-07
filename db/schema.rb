@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_113041) do
     t.string "title"
     t.string "author"
     t.string "published"
+    t.string "condition"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_113041) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.integer "age"
     t.string "email"
     t.string "password_digest"
     t.text "bio"
