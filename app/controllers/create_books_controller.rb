@@ -1,0 +1,2 @@
+class CreateBooksController < ApplicationController
+end
