@@ -12,9 +12,9 @@ class User < ApplicationRecord
     format: { with: URI::MailTo::EMAIL_REGEXP }
 
 
-  validates :phone_number,
-    format: { with: /\A\d{13}\z/ },
-    length: { maximum: 13 },
+  validates :phoneNumber,
+    format: { with: /\A\d{10}\z/ },
+    length: { maximum: 10 },
     allow_nil: false
 
     has_many :sent_book_exchanges, foreign_key: 'sender_id', class_name: 'BookExchange'
