@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
 
   validates :phoneNumber,
-    format: { with: /\A\d{10}\z/ },
+    # format: { with: /\A\d{10}\z/ },
     length: { maximum: 10 },
     allow_nil: false
 

@@ -5,15 +5,15 @@ class UsersController < ApplicationController
         render :show
       end
     
-      def create 
+      def create
         @user = User.create(user_params)
-        if @user.save 
-          render :show
-        else 
-          render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    
+        if @user
+          render json: @user, status: :created
+        else
+          render json: @user.errors, status: :unprocessable_entity
         end
       end
-    
       def update
         @user = User.find(current_user.id)
         if @user.update(user_params)
@@ -25,13 +25,12 @@ class UsersController < ApplicationController
       end
     
       def index 
-        @users = User.all
-        render :index
+       render json:User.all
       end
 
     private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :phoneNumber, :address, :bio, :profile_pic)
+        params.require(:user).permit(:name, :age, :email, :password, :phoneNumber, :address, :bio, :profile_pic)
     end
 end
