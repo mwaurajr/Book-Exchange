@@ -4,4 +4,5 @@ class Book < ApplicationRecord
     validates :title, :author,  presence: true
 
     has_many :book_exchanges
+    has_many :reviews, dependent: :destroy
 end

@@ -19,5 +19,6 @@ class User < ApplicationRecord
 
     has_many :sent_book_exchanges, foreign_key: 'sender_id', class_name: 'BookExchange'
     has_many :received_book_exchanges, foreign_key: 'receiver_id', class_name: 'BookExchange'
+    has_many :reviews, dependent: :destroy
     
 end
