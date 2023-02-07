@@ -15,4 +15,9 @@ class UsersController < ApplicationController
     def delete
     end 
 
+    private
+
+    def UsersParams
+        params.permit(:name, :email, :password, :phoneNumber, :address,:bio, :profile_pic)
+    end
 end
