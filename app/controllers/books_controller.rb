@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
-    
-    def index
-        
-    end
+    before_action :require_login
+
+  def index
+    render json: current_user.books
+  end
 
     def show
     end
@@ -22,5 +23,9 @@ class BooksController < ApplicationController
     def books_params
         params.require(:books).permit(:title, :description, :author, :published)
     end
+
+    def require_login
+        head :unauthorized unless current_user
+      end
 
 end
