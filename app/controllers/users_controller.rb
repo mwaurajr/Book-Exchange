@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ActionController::Cookies
 
     def show
         @user = User.find(user_params[:id])
