@@ -21,23 +21,23 @@ ApplicationRecord.connection.reset_pk_sequence!('reviews')
 
 
 puts "Creating users..."
-user1 = User.create(
+user1 = User.create!(
     name: "Wung wang",
     email: "wung.wang@gmail.com",
     age: 22,
-    phoneNumber: 790855456,
+    phoneNumber: 1234567890,
     password: "12345",
     address: "1203Strt",
     bio: Faker::Lorem.paragraph,
     profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
 )
 
-user2 = User.create(
+user2 = User.create!(
     name: "Mojino",
     age: 24,
      email: "mojino40.m@gmail.com",
      password: "123456",
-     phoneNumber: 790855427,
+     phoneNumber: 9876543210,
     address: "1201 Githurai",
      bio: "odjiehdioehcihcowhdowehdowhdioehdeiocdincodcohvruvrougvuoehouhuoweduhwohuowhdohcedcbnjkkskjahodhedheheoheofhofhwofhowf",
      profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
@@ -59,7 +59,7 @@ book1 = Book.create(
 
 
 puts "Creating Reviews..."
-review1 = Review.create(
+ Review.create(
     content: Faker::Lorem.characters,
     rating: 4,
     user_id: 1,
