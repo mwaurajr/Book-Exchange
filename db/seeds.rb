@@ -5,3 +5,65 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "Destroying tables..."
+
+User.destroy_all
+Book.destroy_all
+Review.destroy_all
+
+
+puts "Resetting primary keys..."
+
+ApplicationRecord.connection.reset_pk_sequence!('users')
+ApplicationRecord.connection.reset_pk_sequence!('books')
+ApplicationRecord.connection.reset_pk_sequence!('reviews')
+
+
+puts "Creating users..."
+user1 = User.create(
+    name: "Wung wang",
+    email: "wung.wang@gmail.com",
+    age: 22,
+    phoneNumber: 790855456,
+    password: "12345",
+    address: "1203Strt",
+    bio: Faker::Lorem.paragraph,
+    profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+)
+
+user2 = User.create(
+    name: "Mojino",
+    age: 24,
+     email: "mojino40.m@gmail.com",
+     password: "123456",
+     phoneNumber: 790855427,
+    address: "1201 Githurai",
+     bio: "odjiehdioehcihcowhdowehdowhdioehdeiocdincodcohvruvrougvuoehouhuoweduhwohuowhdohcedcbnjkkskjahodhedheheoheofhofhwofhowf",
+     profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+    
+  
+   
+)
+
+puts "Creating books..."
+book1 = Book.create(
+    title: "The river and the source",
+    description: Faker::Lorem.characters,
+    condition: "New",
+    user_id: 1,
+    author: "Robert Ouko",
+    published: 2010
+)
+
+
+
+puts "Creating Reviews..."
+review1 = Review.create(
+    content: Faker::Lorem.characters,
+    rating: 4,
+    user_id: 1,
+    book_id: 1,
+)
+
+puts "Done seeding data."
