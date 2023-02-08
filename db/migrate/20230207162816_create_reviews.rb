@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :book, null: false, foreign_key: true
       t.text :content
+      t.integer :book_exchange_id, null: false, foreign_key: true
       t.integer :rating
 
       t.timestamps

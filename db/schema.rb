@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_08_141806) do
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
     t.text "content"
+    t.integer "book_exchange_id", null: false
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

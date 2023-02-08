@@ -57,13 +57,16 @@ book1 = Book.create(
 )
 
 
+puts "Creating BookExchanges..."
+
+
+ BookExchange.create(sender_id: 1, receiver_id: 2, book_id: 3)
+
 
 puts "Creating Reviews..."
- Review.create(
-    content: Faker::Lorem.characters,
-    rating: 4,
-    user_id: 1,
-    book_id: 1,
-)
+
+Review.create(user_id: 1, book_exchange_id: rand(1..BookExchange.all.size), rating: 4, content: "This book exchange was great!")
+
+
 
 puts "Done seeding data."
