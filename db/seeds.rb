@@ -29,7 +29,7 @@ user1 = User.create!(
     password: "12345",
     address: "1203Strt",
     bio: Faker::Lorem.paragraph,
-    profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+    # profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
 )
 
 user2 = User.create!(
@@ -40,7 +40,7 @@ user2 = User.create!(
      phoneNumber: 9876543210,
     address: "1201 Githurai",
      bio: "odjiehdioehcihcowhdowehdowhdioehdeiocdincodcohvruvrougvuoehouhuoweduhwohuowhdohcedcbnjkkskjahodhedheheoheofhofhwofhowf",
-     profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+    #  profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
     
   
    

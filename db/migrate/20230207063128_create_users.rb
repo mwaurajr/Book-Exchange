@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.text :bio
       t.string :address
       t.integer :phoneNumber
-      t.string :profile_pic
+      # t.string :profile_pic
 
       t.timestamps
     end
