@@ -1,31 +1,26 @@
 class SessionsController < ApplicationController
 
-    skip_before_action :require_login, only: [:create]
+  def create
+    user = User.find_by_email(session_params[:email])
 
-    def create
-      user = User.find_by(email: session_params[:email])
-  
-      if user&.authenticate(session_params[:password])
-        jwt_token = JWT.encode(
-          { user_id: user.id },
-          Rails.application.credentials.secret_key_base,
-          "HS256"
-        )
-        cookies["jwt_token"] = jwt_token
-        render json: { jwt_token: jwt_token }
-      else
-        render json: { error: "Invalid email or password" }, status: :unauthorized
-      end
+    if user && user.authenticate(session_params[:password])
+        token = issue_token(user)
+        render json: {user: UserSerializer.new(user), jwt: token}
+    else
+        render json: {error: "Incorrect username or password."}
     end
-  
-    def destroy
-      cookies.delete("jwt_token")
-      head :no_content
+end
+
+def show
+    if logged_in?
+        render json: current_user
+    else
+        render json: {error: "User is not logged in/could not be found."}
     end
-  
-    private
-  
-    def session_params
-      params.require(:session).permit(:email, :password)
-    end
+end
+
+private
+def session_params
+    params.require(:session).permit(:email, :password)
+end
 end
