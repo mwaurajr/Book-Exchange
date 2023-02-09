@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
     has_many :books
+    has_one_attached :profile_pic
 
     # attribute :phoneNumber, :integer, limit: 
 
