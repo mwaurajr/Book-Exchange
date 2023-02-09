@@ -33,3 +33,5 @@ gem 'active_model_serializers'
 gem "faker", "~> 3.1"
 gem 'activestorage', '~> 7.0'
 gem "jwt", "~> 2.7"
+gem 'aws-sdk-s3', '~> 1'
+
