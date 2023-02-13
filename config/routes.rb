@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 post "/signup", to: "users#create"
 post "/login", to: "sessions#create"
 get "/authorized", to: "sessions#show"
-
+post 'messages', to: 'messages#create'
+get 'conversations/:recipient_id', to: 'messages#index'
 end
