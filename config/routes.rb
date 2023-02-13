@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :reviews
   resources :book_exchanges
   resources :books
