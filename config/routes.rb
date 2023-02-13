@@ -13,4 +13,5 @@ post "/login", to: "sessions#create"
 get "/authorized", to: "sessions#show"
 post 'messages', to: 'messages#create'
 get 'conversations/:recipient_id', to: 'messages#index'
+delete 'conversations/:id', to: 'conversations#destroy'
 end
