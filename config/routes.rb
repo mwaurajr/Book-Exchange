@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :messages
+  # resources :messages
   resources :reviews
   resources :book_exchanges
   resources :books
@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 post "/signup", to: "users#create"
 post "/login", to: "sessions#create"
 get "/authorized", to: "sessions#show"
+
 end
