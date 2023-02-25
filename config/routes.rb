@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+  get 'messages/index'
+  get 'messages/destroy'
   resources :reviews
   # resources :messages
   resources :book_exchanges
