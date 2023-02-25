@@ -30,4 +30,12 @@ end
 def logged_in?
     !!current_user
 end
+
+def authenticate_user!
+    token, _options = token_and_options(request)
+    user_id = AuthenticationTokenService.decode(token)
+    @current_user = User.find(user_id)
+  rescue ActiveRecord::RecordNotFound, JWT::DecodeError
+    render json: { error: 'Unauthorized' }, status: :unauthorized
+  end
 end
