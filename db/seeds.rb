@@ -47,11 +47,11 @@ user2 = User.create!(
 )
 
 puts "Creating books..."
-book1 = Book.create(
-    title: "The river and the source",
+book1 = Book.create!(
     description: Faker::Lorem.characters,
     condition: "New",
     user_id: 1,
+    title: "Book of Knowledge",
     author: "Robert Ouko",
     published: 2010
 )
@@ -60,12 +60,12 @@ book1 = Book.create(
 puts "Creating BookExchanges..."
 
 
- BookExchange.create(sender_id: 1, receiver_id: 2, book_id: 3)
+ BookExchange.create!(sender_id: 1, receiver_id: 2, book_id: 1)
 
 
 puts "Creating Reviews..."
 
-Review.create(user_id: 1, book_exchange_id: rand(1..BookExchange.all.size), rating: 4, content: "This book exchange was great!")
+Review.create!(user_id: 1, rating: 4, content: "This book exchange was great!", book_id: 1)
 
 
 
