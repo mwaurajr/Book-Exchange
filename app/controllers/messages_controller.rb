@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
 
   def create
     conversation = Conversation.find_or_create_by(
@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     )
     message = conversation.messages.build(message_params.merge(user_id: current_user.id))
     if message.save
+      ActionCable.server.broadcast 'ChatChannel', message: message.to_json
       render json: message, status: :created
     else
       render json: message.errors, status: :unprocessable_entity
