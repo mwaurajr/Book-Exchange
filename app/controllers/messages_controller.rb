@@ -8,7 +8,8 @@ class MessagesController < ApplicationController
     )
     message = conversation.messages.build(message_params.merge(user_id: current_user.id))
     if message.save
-      ActionCable.server.broadcast 'ChatChannel', message: message.to_json
+      # Broadcast message to conversation channel
+      MessagesChannel.broadcast_to(conversation, render_message(message))
       render json: message, status: :created
     else
       render json: message.errors, status: :unprocessable_entity
@@ -16,22 +17,19 @@ class MessagesController < ApplicationController
   end
 
   def index
-    recipient = User.find(params[:recipient_id])
-    conversation = Conversation.find_by(sender: current_user, recipient: recipient) ||
-      Conversation.find_by(sender: recipient, recipient: current_user)
-    messages = conversation.messages.order(created_at: :desc)
+    conversation = Conversation.find(params[:conversation_id])
+    messages = conversation.messages.order(created_at: :asc)
     render json: messages
-  end
-
-  def destroy
-    message = Message.find(params[:id])
-    message.destroy
-    head :ok
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:body)
+  end
+
+  # Renders a message as HTML using a partial
+  def render_message(message)
+    ApplicationController.renderer.render(partial: 'messages/message', locals: { message: message })
   end
 end
