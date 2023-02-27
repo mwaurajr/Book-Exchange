@@ -1,4 +1,5 @@
 class MessagesChannel < ApplicationCable::Channel
+  before_action :authenticate_user!
   def subscribed
     stream_from "messages_channel"
   end

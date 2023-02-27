@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-    before_action :require_login
+  before_action :authenticate_user!
 
   def index
     render json: current_user.books
