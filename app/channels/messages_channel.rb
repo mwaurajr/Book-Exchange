@@ -1,7 +1,8 @@
 class MessagesChannel < ApplicationCable::Channel
   before_action :authenticate_user!
+  
   def subscribed
-    stream_from "messages_channel"
+    stream_from "messages_#{params[:conversation_id]}"
   end
 
   def unsubscribed
