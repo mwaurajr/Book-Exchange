@@ -19,7 +19,7 @@ class BooksController < ApplicationController
       if book
         render json: book, status: :created
       else
-        render json: {erro: "Invalid Book"}, status: :unprocessable_entity
+        render json: {error: "Invalid Book"}, status: :unprocessable_entity
 
     end
 
