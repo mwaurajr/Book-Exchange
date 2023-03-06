@@ -49,11 +49,11 @@ user2 = User.create!(
 puts "Creating books..."
 book1 = Book.create!(
     description: Faker::Lorem.characters,
-    condition: "New",
+    # condition: "New",
     user_id: 1,
     title: "Book of Knowledge",
     author: "Robert Ouko",
-    published: 2010
+    # published: 2010
 )
 
 
