@@ -33,8 +33,54 @@ user1 = User.create!(
 )
 
 user2 = User.create!(
-    name: "Mojino",
+    name: "Mwas Kante",
+    email: "mwas@gmail.com",
+    age: 23,
+    phoneNumber: 1234567890,
+    password: "12345",
+    address: "1203Strt",
+    bio: Faker::Lorem.paragraph,
+    # profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+)
+
+user3 = User.create!(
+    name: "Wang JI",
+    email: "wung.JI@gmail.com",
     age: 24,
+    phoneNumber: 1234567890,
+    password: "12345",
+    address: "1203Strt",
+    bio: Faker::Lorem.paragraph,
+    # profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+)
+
+user4 = User.create!(
+    name: "Wung wangji",
+    email: "wung.wangji@gmail.com",
+    age: 25,
+    phoneNumber: 1234567890,
+    password: "12345",
+    address: "1203Strt",
+    bio: Faker::Lorem.paragraph,
+    # profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+)
+
+
+user5 = User.create!(
+    name: "Wung ",
+    email: "wung.@gmail.com",
+    age: 26,
+    phoneNumber: 1234567890,
+    password: "12345",
+    address: "1203Strt",
+    bio: Faker::Lorem.paragraph,
+    # profile_pic: "https://www.shutterstock.com/image-photo/barcelona-feb-15-lionel-messi-600w-1658517079.jpg"
+)
+
+
+user6 = User.create!(
+    name: "Mojino",
+    age: 27,
      email: "mojino40.m@gmail.com",
      password: "123456",
      phoneNumber: 9876543210,
@@ -55,6 +101,54 @@ book1 = Book.create!(
     author: "Robert Ouko",
     # published: 2010
 )
+Book.create!(
+    description: Faker::Lorem.characters,
+    # condition: "New",
+    user_id: 1,
+    title: "Blossoms of the savannah",
+    author: "Robert Ouko",
+    # published: 2010
+)
+Book.create!(
+    description: Faker::Lorem.characters,
+    # condition: "New",
+    user_id: 1,
+    title: "Chozi la Heri",
+    author: "Robert Ouko",
+    # published: 2010
+)
+Book.create!(
+    description: Faker::Lorem.characters,
+    # condition: "New",
+    user_id: 1,
+    title: "The pearl",
+    author: "Robert Ouko",
+    # published: 2010
+)
+Book.create!(
+    description: Faker::Lorem.characters,
+    # condition: "New",
+    user_id: 1,
+    title: "Gulible",
+    author: "Robert Ouko",
+    # published: 2010
+)
+Book.create!(
+    description: Faker::Lorem.characters,
+    # condition: "New",
+    user_id: 1,
+    title: "Kidagaa Kimemwozea",
+    author: "Robert Ouko",
+    # published: 2010
+)
+Book.create!(
+    description: Faker::Lorem.characters,
+    # condition: "New",
+    user_id: 1,
+    title: "Riverand the source",
+    author: "Robert Ouko",
+    # published: 2010
+)
 
 
 puts "Creating BookExchanges..."
@@ -66,6 +160,11 @@ puts "Creating BookExchanges..."
 puts "Creating Reviews..."
 
 Review.create!(user_id: 1, rating: 4, content: "This book exchange was great!", book_id: 1)
+Review.create!(user_id: 3, rating: 4, content: "This book exchange was great!", book_id: 2)
+Review.create!(user_id: 2, rating: 4, content: "This book exchange was great!", book_id: 3)
+Review.create!(user_id: 2, rating: 4, content: "This book exchange was great!", book_id: 5)
+Review.create!(user_id: 3, rating: 4, content: "This book exchange was great!", book_id: 4)
+Review.create!(user_id: 4, rating: 4, content: "This book exchange was great!", book_id: 3)
 
 
 
