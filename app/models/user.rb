@@ -16,7 +16,9 @@ class User < ApplicationRecord
   validates :phoneNumber,
     format: { with: /\A\d{10}\z/ },
     length: { maximum: 10 },
-    allow_nil: false
+    allow_nil: true
+
+    validate :validate_age
 
     attribute :phoneNumber, :integer, limit: 16
 
@@ -27,5 +29,15 @@ class User < ApplicationRecord
     has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'sender_id'
     has_many :received_conversations, class_name: 'Conversation', foreign_key: 'recipient_id'
     has_many :messages
+
+
+
+
+    def validate_age
+      if age.present? && age < 13.years.ago
+        errors.add(:age, "You must be 13 or older to use Bookswap. Other people won't see your birthday.")
+      end
+    end
+    
     
 end
