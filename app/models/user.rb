@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
     # attribute :phoneNumber, :integer, limit: 
 
-    validates :name, :address, presence: true
+    validates :name, presence: true
    
     validates :email, 
     uniqueness: true, 
@@ -13,10 +13,11 @@ class User < ApplicationRecord
     format: { with: URI::MailTo::EMAIL_REGEXP }
 
 
-  validates :phoneNumber,
-    format: { with: /\A\d{10}\z/ },
-    length: { maximum: 10 },
-    allow_nil: true
+    # validates :phoneNumber, presence: true, format: {
+    #   with: /\A\+?\d{8,15}\z/,
+    #   message: "must be a valid phone number"
+    # }
+    
 
     validate :validate_age
 
