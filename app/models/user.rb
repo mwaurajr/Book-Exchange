@@ -36,11 +36,15 @@ class User < ApplicationRecord
 
 
 
-    def validate_age
-      if age.present? && age < 13.years.ago
+     def validate_age
+      if age.present? && age.to_i.years.ago > Date.current
         errors.add(:age, "You must be 13 or older to use Bookswap. Other people won't see your birthday.")
       end
     end
+    
+    
+    
+    
     
     
 end

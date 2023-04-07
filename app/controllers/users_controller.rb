@@ -14,13 +14,9 @@ class UsersController < ApplicationController
       if user.save
           token = issue_token(user)
           render json: {user: UserSerializer.new(user), jwt: token}
-      else
-          if user.errors.messages
-              render json: {error: user.errors.messages}
-          else
-              render json: {error: "User could not be created. Please try again."}
+        else
+            render json: { error: user.errors.full_messages.join(', ') }
           end
-      end
   end
 
   def show
