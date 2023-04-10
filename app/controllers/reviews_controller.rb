@@ -1,7 +1,10 @@
 class ReviewsController < ApplicationController
-    def index
-        render json: Review.all, status: :ok
-      end
+  before_action :set_user
+
+  def index
+    reviews = @user.reviews
+    render json: reviews
+  end 
     
       def show
         review = Review.find(params[:id])
@@ -32,5 +35,10 @@ class ReviewsController < ApplicationController
     
       def review_params
         params.permit(:rating, :content, :user_id, :book_id)
+      end
+
+    
+      def set_user
+        @user = User.find(params[:user_id])
       end
 end

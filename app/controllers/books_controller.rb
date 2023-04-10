@@ -1,10 +1,12 @@
 class BooksController < ApplicationController
-  # before_action :authenticate_user!
-  before_action :require_login
+ 
+  before_action :set_user
 
   def index
-    render json: current_user.books
+    books = @user.books
+    render json: books
   end
+
 
     def show
       book = Book.find(params[:id])
@@ -41,9 +43,8 @@ class BooksController < ApplicationController
     def books_params
         params.require(:books).permit(:title, :description, :author)
     end
-
-    def require_login
-        head :unauthorized unless current_user
-      end
-
+  
+    def set_user
+      @user = User.find(params[:user_id])
+    end
 end

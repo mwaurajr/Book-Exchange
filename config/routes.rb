@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :book_exchanges
   resources :books
   resources :users
+
+    get '/users/:user_id/books', to: 'books#index'
+  # Route for fetching a user's reviews
+  get '/users/:user_id/reviews', to: 'reviews#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :notifications, only: [:index]
 
